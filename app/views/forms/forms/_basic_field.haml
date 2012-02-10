@@ -8,5 +8,10 @@
   %label.required
     %input{:type => "checkbox", :name => "#{prefix}[required]", :value => "1", :checked => basic_field.required?}
     This field is required
+
+  - if basic_field.respond_to?(:validate_as_email_address)
+    %label.email_address
+      %input{:type => "checkbox", :name => "#{prefix}[validate_as_email_address]", :value => "1", :checked => basic_field.validate_as_email_address?}
+      Validate as email address
   
   = link_to "Delete", '#', :class => 'delete'
